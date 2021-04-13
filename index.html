@@ -16,18 +16,18 @@
 
     <button class="add-book">Add New Book</button>
 
-    <form class="library-form">
+    <form class="library-form" >
       <input type="text" name="title" placeholder="Title">
       <input type="text" name="author" placeholder="Author">
-      <input type="number" name="Pages" placeholder="Pages">
+      <input type="number" name="pages" placeholder="Pages">
       <label>
         Read?
         <input type="checkbox" name="read">
       </label>
-      <input type="submit" value="Add Book">
+      <input type="submit" value="Add Book" class="form-submit">
     </form>
 
-    <div>
+    <div class="shelf">
       <table>
         <thead>
         <tr>
@@ -38,7 +38,15 @@
           <th>Action</th>
         </tr>
         </thead>
-        <tbody></tbody>
+        <tbody class="table-body">
+        <tr>
+          <td>Book1</td>
+          <td>Author1</td>
+          <td>400</td>
+          <td>Yes</td>
+          <td>delete</td>
+        </tr>
+        </tbody>
       </table>
     </div>
   </div>
