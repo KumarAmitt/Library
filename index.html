@@ -11,6 +11,38 @@
   <title>Library</title>
 </head>
 <body>
+  <div class="container">
+    <h1>Library App</h1>
+
+    <button class="add-book">Add New Book</button>
+
+    <form class="library-form">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="author" placeholder="Author">
+      <input type="number" name="Pages" placeholder="Pages">
+      <label>
+        Read?
+        <input type="checkbox" name="read">
+      </label>
+      <input type="submit" value="Add Book">
+    </form>
+
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read?</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
 
 </body>
 </html>
