@@ -18,7 +18,7 @@ function addBookToLibrary(id){
   let read = document.querySelector('[name=read]').checked;
 
   myLibrary.unshift(new Book(id, title, author, pages, read))
-  console.log(id, title)
+  console.log(myLibrary)
 }
 
 
@@ -31,7 +31,7 @@ function showBook(){
                         <td>${b.author}</td>
                         <td>${b.pages}</td>
                         <td>${b.read}</td>
-                        <td onclick="destroy(this)">Delete<span>${b.id}</span></td>
+                        <td onclick="destroy(this, ${b.id})">Delete</td>
                       </tr>`;
     tableBody.innerHTML += tableRow;
   });
@@ -47,11 +47,10 @@ document.querySelector('.form-submit').addEventListener('click', (e) => {
   showBook();
 })
 
-function destroy(currentNode){
+function destroy(currentNode, id){
   currentNode.parentNode.remove()
-  const index = parseInt(currentNode.lastElementChild.textContent)
-  myLibrary.splice(index, 1);
-  console.log(index, myLibrary)
+  myLibrary.splice(myLibrary.findIndex(i => i === id), 1);
+  console.log(id, myLibrary.length, myLibrary)
 }
 
 
