@@ -18,21 +18,22 @@ function addBookToLibrary(id){
   let read = document.querySelector('[name=read]').checked;
 
   myLibrary.unshift(new Book(id, title, author, pages, read))
-  console.log(myLibrary)
+  // console.log(myLibrary)
 }
 
 
 function showBook(){
   const tableBody = document.querySelector('.table-body');
   tableBody.innerHTML = '';
-  myLibrary.forEach((b, i) => {
+  myLibrary.forEach((b) => {
     const tableRow = `<tr>
                         <td>${b.title}</td>
                         <td>${b.author}</td>
                         <td>${b.pages}</td>
-                        <td>${b.read}</td>
+                        <td><div class="box" onclick="changeStatus(this)">${readStatus(b.read)}</div></td>
                         <td onclick="destroy(this, ${b.id})">Delete</td>
                       </tr>`;
+
     tableBody.innerHTML += tableRow;
   });
 }
@@ -50,7 +51,14 @@ document.querySelector('.form-submit').addEventListener('click', (e) => {
 function destroy(currentNode, id){
   currentNode.parentNode.remove()
   myLibrary.splice(myLibrary.findIndex(i => i === id), 1);
-  console.log(id, myLibrary.length, myLibrary)
+}
+
+function changeStatus(currentNode) {
+  currentNode.textContent = currentNode.textContent === '✔' ? '×' : '✔'
+}
+
+function readStatus(read){
+  return read ? '✔' : '×'
 }
 
 
