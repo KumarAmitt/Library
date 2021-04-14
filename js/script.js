@@ -61,7 +61,9 @@ function readStatus(read){
   return read ? '✔' : '×'
 }
 
-
+document.querySelector('.add-book').addEventListener('click', (e) => {
+  document.querySelector('.library-form').classList.toggle('show')
+});
 
 
 

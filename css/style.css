@@ -21,7 +21,12 @@ body {
 }
 
 .library-form {
-  display: flex;
+  /*display: flex;*/
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 .shelf {
