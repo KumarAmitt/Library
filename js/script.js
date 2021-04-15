@@ -17,8 +17,13 @@ function addBookToLibrary(id){
   let pages = document.querySelector('[name=pages]').value;
   let read = document.querySelector('[name=read]').checked;
 
-  myLibrary.unshift(new Book(id, title, author, pages, read))
-  // console.log(myLibrary)
+  let book = new Book(id, title, author, pages, read)
+  if (validate(book)){
+    myLibrary.unshift(new Book(id, title, author, pages, read))
+  } else {
+    alert();
+  }
+
 }
 
 
@@ -30,7 +35,7 @@ function showBook(){
                         <td>${b.title}</td>
                         <td>${b.author}</td>
                         <td>${b.pages}</td>
-                        <td><div class="box" onclick="changeStatus(this)">${readStatus(b.read)}</div></td>
+                        <td><div onclick="changeStatus(this)">${readStatus(b.read)}</div></td>
                         <td onclick="destroy(this, ${b.id})">Delete</td>
                       </tr>`;
 
@@ -46,6 +51,7 @@ document.querySelector('.form-submit').addEventListener('click', (e) => {
   e.preventDefault();
   addBookToLibrary(id++);
   showBook();
+  clear();
 })
 
 function destroy(currentNode, id){
@@ -65,6 +71,18 @@ document.querySelector('.add-book').addEventListener('click', (e) => {
   document.querySelector('.library-form').classList.toggle('show')
 });
 
+function validate(book){
+  return !(book.title.length < 2 || book.author.length < 2 || book.pages === '')
+}
+
+function alert(){
+  const target = document.querySelector('.alert')
+  target.innerHTML = 'Invalid Data Submission';
+
+  setTimeout(() => {
+    target.innerHTML = '';
+  }, 2000);
+}
 
 
 
