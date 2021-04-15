@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A web App to record book details"/>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/script.js" defer></script>
+
+  <title>Library</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="heading">Library App</h1>
+
+    <div class="alert"></div>
+
+    <button class="add-book">Add New Book</button>
+
+    <form class="library-form" >
+      <input type="text" name="title" placeholder="Title (At least 2 characters)">
+      <input type="text" name="author" placeholder="Author (At least 2 characters)">
+      <input type="number" name="pages" placeholder="Pages (can't be blank)">
+      <label>
+        Read?
+        <input type="checkbox" name="read">
+      </label>
+      <input type="submit" value="&#10133" class="form-submit">
+    </form>
+
+    <div class="shelf">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read?</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody class="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
