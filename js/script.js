@@ -1,4 +1,3 @@
-
 const myLibrary = [];
 let id = 0;
 
@@ -10,6 +9,35 @@ function Book(id, title, author, pages, read) {
   this.read = read;
 }
 
+function validate(book) {
+  return !(book.title.length < 2 || book.author.length < 2 || book.pages === '');
+}
+
+function alert() {
+  const target = document.querySelector('.alert');
+  target.innerHTML = 'Invalid Data Submission';
+
+  setTimeout(() => {
+    target.innerHTML = '';
+  }, 2000);
+}
+
+function destroy(currentNode, id) { // eslint-disable-line no-unused-vars
+  currentNode.parentNode.remove();
+  myLibrary.splice(myLibrary.findIndex((i) => i === id), 1);
+}
+
+function readStatus(read) {
+  return read ? '✔' : '×';
+}
+
+function changeStatus(currentNode) { // eslint-disable-line no-unused-vars
+  currentNode.textContent = currentNode.textContent === '✔' ? '×' : '✔';
+}
+
+function clear() {
+  document.querySelector('form').reset();
+}
 
 function addBookToLibrary(id) {
   const title = document.querySelector('[name=title]').value;
@@ -24,7 +52,6 @@ function addBookToLibrary(id) {
     alert();
   }
 }
-
 
 function showBook() {
   const tableBody = document.querySelector('.table-body');
@@ -42,43 +69,14 @@ function showBook() {
   });
 }
 
-function clear() {
-  document.querySelector('form').reset();
-}
-
 document.querySelector('.form-submit').addEventListener('click', (e) => {
   e.preventDefault();
-  addBookToLibrary(id++);
+  addBookToLibrary(id);
+  id += 1;
   showBook();
   clear();
 });
 
-function destroy(currentNode, id) {
-  currentNode.parentNode.remove();
-  myLibrary.splice(myLibrary.findIndex((i) => i === id), 1);
-}
-
-function changeStatus(currentNode) {
-  currentNode.textContent = currentNode.textContent === '✔' ? '×' : '✔';
-}
-
-function readStatus(read) {
-  return read ? '✔' : '×';
-}
-
-document.querySelector('.add-book').addEventListener('click', (e) => {
+document.querySelector('.add-book').addEventListener('click', () => {
   document.querySelector('.library-form').classList.toggle('show');
 });
-
-function validate(book) {
-  return !(book.title.length < 2 || book.author.length < 2 || book.pages === '');
-}
-
-function alert() {
-  const target = document.querySelector('.alert');
-  target.innerHTML = 'Invalid Data Submission';
-
-  setTimeout(() => {
-    target.innerHTML = '';
-  }, 2000);
-}
