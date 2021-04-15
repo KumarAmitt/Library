@@ -1,8 +1,8 @@
 
-let myLibrary = []
+const myLibrary = [];
 let id = 0;
 
-function Book(id, title, author, pages, read){
+function Book(id, title, author, pages, read) {
   this.id = id;
   this.title = title;
   this.author = author;
@@ -11,23 +11,22 @@ function Book(id, title, author, pages, read){
 }
 
 
-function addBookToLibrary(id){
-  let title = document.querySelector('[name=title]').value;
-  let author = document.querySelector('[name=author]').value;
-  let pages = document.querySelector('[name=pages]').value;
-  let read = document.querySelector('[name=read]').checked;
+function addBookToLibrary(id) {
+  const title = document.querySelector('[name=title]').value;
+  const author = document.querySelector('[name=author]').value;
+  const pages = document.querySelector('[name=pages]').value;
+  const read = document.querySelector('[name=read]').checked;
 
-  let book = new Book(id, title, author, pages, read)
-  if (validate(book)){
-    myLibrary.unshift(new Book(id, title, author, pages, read))
+  const book = new Book(id, title, author, pages, read);
+  if (validate(book)) {
+    myLibrary.unshift(new Book(id, title, author, pages, read));
   } else {
     alert();
   }
-
 }
 
 
-function showBook(){
+function showBook() {
   const tableBody = document.querySelector('.table-body');
   tableBody.innerHTML = '';
   myLibrary.forEach((b) => {
@@ -43,7 +42,7 @@ function showBook(){
   });
 }
 
-function clear(){
+function clear() {
   document.querySelector('form').reset();
 }
 
@@ -52,39 +51,34 @@ document.querySelector('.form-submit').addEventListener('click', (e) => {
   addBookToLibrary(id++);
   showBook();
   clear();
-})
+});
 
-function destroy(currentNode, id){
-  currentNode.parentNode.remove()
-  myLibrary.splice(myLibrary.findIndex(i => i === id), 1);
+function destroy(currentNode, id) {
+  currentNode.parentNode.remove();
+  myLibrary.splice(myLibrary.findIndex((i) => i === id), 1);
 }
 
 function changeStatus(currentNode) {
-  currentNode.textContent = currentNode.textContent === '✔' ? '×' : '✔'
+  currentNode.textContent = currentNode.textContent === '✔' ? '×' : '✔';
 }
 
-function readStatus(read){
-  return read ? '✔' : '×'
+function readStatus(read) {
+  return read ? '✔' : '×';
 }
 
 document.querySelector('.add-book').addEventListener('click', (e) => {
-  document.querySelector('.library-form').classList.toggle('show')
+  document.querySelector('.library-form').classList.toggle('show');
 });
 
-function validate(book){
-  return !(book.title.length < 2 || book.author.length < 2 || book.pages === '')
+function validate(book) {
+  return !(book.title.length < 2 || book.author.length < 2 || book.pages === '');
 }
 
-function alert(){
-  const target = document.querySelector('.alert')
+function alert() {
+  const target = document.querySelector('.alert');
   target.innerHTML = 'Invalid Data Submission';
 
   setTimeout(() => {
     target.innerHTML = '';
   }, 2000);
 }
-
-
-
-
-
